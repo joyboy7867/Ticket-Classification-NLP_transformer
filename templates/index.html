@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IT Support Ticket Classifier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 40px;
+      width: 90%;
+      max-width: 800px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: #00ffff;
+    }
+
+    label {
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: block;
+      font-weight: 600;
+      color: #f0f0f0;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      border: none;
+      padding: 20px;
+      font-size: 16px;
+      resize: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      outline: none;
+      box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    textarea::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      background-color: #00ffff;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+
+    button:hover {
+      background-color: #00b3b3;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-container">
+    <h1>🔍 AI-Powered Ticket Classifier</h1>
+    <form method="POST" action="/predict">
+      <label for="ticket">Enter Your IT Support Ticket:</label>
+      <textarea id="ticket" name="ticket" placeholder="E.g., Laptop won't start after update..." required></textarea>
+      <button type="submit">Classify Ticket</button>
+    </form>
+
+    {% if predictions %}
+    <div class="result-box">
+      <strong>🧠 Prediction:</strong> {{ predictions }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
